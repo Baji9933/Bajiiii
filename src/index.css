@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #050506;
+  --color-surface: #111116;
+  --color-accent-cyan: #00f3ff;
+  --color-accent-pink: #ff00ff;
+  --color-accent-green: #39ff14;
+  --color-text: #e0e0e6;
+  --color-glass: rgba(255, 255, 255, 0.03);
+  --color-glass-border: rgba(255, 255, 255, 0.1);
+  --font-mono: 'Courier New', Courier, monospace;
+}
+
+@layer base {
+  body {
+    @apply bg-[#050506] text-[#e0e0e6] antialiased overflow-hidden;
+    font-family: var(--font-mono);
+    background-image: radial-gradient(circle at 50% 50%, #1a1a2e 0%, #050506 100%);
+  }
+}
+
+@layer utilities {
+  .text-neon-cyan {
+    text-shadow: 0 0 10px #00f3ff;
+  }
+  .text-neon-pink {
+    text-shadow: 0 0 8px #ff00ff;
+  }
+  .text-neon-green {
+    text-shadow: 0 0 10px #39ff14;
+  }
+  .glass-panel {
+    @apply bg-[var(--color-glass)] border border-[var(--color-glass-border)] backdrop-blur-md rounded-xl;
+  }
+}
+
+.scanlines {
+  position: relative;
+  overflow: hidden;
+}
+
+.scanlines::after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.2) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+  z-index: 2;
+  background-size: 100% 4px, 3px 100%;
+  pointer-events: none;
+}
